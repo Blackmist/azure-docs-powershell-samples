@@ -14,6 +14,6 @@ Describe "hdinsight-hadoop-use-pig-powershell" {
     It "Runs a Pig query using Start-AzureRmHDInsightJob" {
         Mock Read-Host { $clusterName }
         # Test that the data we received starts with the expected date column
-        (Start-PigJob $clusterName $creds)[-1].StartsWith("(TRACE,816)") | Should be True
+        (Start-PigJob $clusterName $creds)[0].ExitValue | Should be 0
     }
 }
